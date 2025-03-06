@@ -2,20 +2,20 @@ class Country{
     static all_countries = []
 
     /*code Alpha3, nomFr, capitale, Continent, population,superficie, pays_voisins */ 
-    constructor(_alpha3,_nom,_capitale,_continent,_population,_superficie,_pays_voisins = []){
-        this.alpha3 = _alpha3;
-        this.nom = _nom;
-        this.capitale = _capitale;
-        this.continent = _continent;
-        this.population = _population;
-        this.superficie = _superficie;
-        this._pays_voisins = _pays_voisins
+    constructor(alpha3,nom,capitale,continent,population,superficie,pays_voisins = []){
+        this._alpha3 = alpha3;
+        this._nom = nom;
+        this._capitale = capitale;
+        this._continent = continent;
+        this._population = population;
+        this._superficie = superficie;
+        this._pays_voisins = pays_voisins;
     }
 
 
 
     toString(){
-        return this.alpha3 + ", " + this.nom + ", " + this.capitale + ", "+this.continent+", " + this.population + "hab, ";
+        return `${this._alpha3}, ${this._nom}, ${this._capitale}, ${this._continent}, ${this._population} hab, `;
     }
 
 
