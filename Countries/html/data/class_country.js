@@ -23,13 +23,13 @@ class Country{
         countries.forEach(data => {
             let country = new Country
             (
-                data.alpha3Code,data.translation["fr"],
+                data.alpha3Code,data.name,
                 data.capital,
                 data.region,
                 data.population,
                 data.area,
             );
-            all_countries[data.alpha3Code] = country;
+            Country.all_countries[data.alpha3Code] = country;
         });
     }
 
@@ -49,3 +49,7 @@ class Country{
         return 
     }
 }
+
+let c1 = new Country();
+c1.fill_countries();
+console.table(Country.all_countries);
