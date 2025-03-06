@@ -1,0 +1,9 @@
+Mathieu
+    class_country : 100%
+    class_currency : 100%
+    test : 50%
+        withCommonLanguage() : 100%
+        withoutCommonCurrency() : 100%
+        sortingDecreasingDensity()
+        moreTopLevelDomains()
+        
