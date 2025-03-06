@@ -15,26 +15,29 @@ class Country{
 
 
     toString(){
-        return `${this._alpha3}, ${this._nom}, ${this._capitale}, ${this._continent}, ${this._population} hab, `;
+        return `${this._alpha3}, ${this._nom}, ${this._capitale}, ${this._continent}, ${this._population} hab, ${this._pays_voisins} `;
     }
 
 
     fill_countries(){
         countries.forEach(data => {
+            
             let country = new Country
             (
-                data.alpha3Code,data.name,
+                data.alpha3Code,
+                data.translations['fr'],
                 data.capital,
                 data.region,
                 data.population,
                 data.area,
+                data.borders
             );
             Country.all_countries[data.alpha3Code] = country;
         });
     }
 
     getPopDensity(){
-        return this.population / this.densite;
+        return this._population / this._superficie;
     }
 
     getBorders(){
@@ -51,5 +54,7 @@ class Country{
 }
 
 let c1 = new Country();
-c1.fill_countries();
-console.table(Country.all_countries);
+c1.fill_countries(countries);
+Object.values(Country.all_countries).forEach(data => {
+    console.log(data.toString());
+});

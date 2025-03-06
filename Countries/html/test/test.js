@@ -1,31 +1,31 @@
 function outsideTheContinent(){
-    return ;
+    console.log();
 }
 
 function moreNeighbors(){
-    return ;
+    console.log();
 }
 
 function neghborless(){
-    return ;
+    console.log();
 }
 
 function moreLanguages(){
-    return ;
+    console.log();
 }
 
 function withCommonLanguage(){
-    return ;
+    console.log();
 }
 
 function withoutCommonCurrency(){
-    return ;
+    console.log();
 }
 
 function sortingDecreasingDensity(){
-    return ;
+    console.log();
 }
 
 function moreTopLevelDomains(){
-    return ;
+    console.log();
 }
