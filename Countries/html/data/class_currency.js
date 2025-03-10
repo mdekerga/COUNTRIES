@@ -13,7 +13,7 @@ class Currency
         return `${this._code}, ${this._nom}, ${this._symbole}`;
     }
 
-    fill_currencies()
+    static fill_currencies()
     {
         countries.forEach(data => 
             {
@@ -31,8 +31,8 @@ class Currency
     }
 }
 
-let cu1 = new Currency();
+/* let cu1 = new Currency();
 cu1.fill_currencies();
 Object.values(Currency.all_currencies).forEach(data => {
     console.log(data.toString());
-});
+}); */

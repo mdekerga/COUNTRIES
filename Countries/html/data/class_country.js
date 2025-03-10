@@ -1,5 +1,5 @@
 class Country{
-    static all_countries = []
+    static all_countries = {};
 
     /*code Alpha3, nomFr, capitale, Continent, population,superficie, pays_voisins */ 
     constructor(alpha3,nom,capitale,continent,population,superficie,pays_voisins = []){
@@ -53,8 +53,8 @@ class Country{
     }
 }
 
-let c1 = new Country();
+/* let c1 = new Country();
 c1.fill_countries(countries);
 Object.values(Country.all_countries).forEach(data => {
     console.log(data.toString());
-});
+}); */
