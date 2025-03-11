@@ -13,26 +13,18 @@ class Currency
         return `${this._code}, ${this._nom}, ${this._symbole}`;
     }
 
-    static fill_currencies()
-    {
-        countries.forEach(data => 
-            {
-                data.currencies.forEach(currency =>{
-                    let cur = new Currency
-                    (
-                        currency.code,
-                        currency.name,
-                        currency.symbol
-                    )
-                    Currency.all_currencies[currency.code] = cur;
-                })
+    static fill_currencies() {
+        countries.forEach(country => {
+            if (country.currencies) {
+                country.currencies.forEach(currency => {
+                    const newCurrency = new Currency(currency.code, currency.name, currency.symbol);
+                    Currency.all_currencies[currency.code] = newCurrency;
+                });
             }
-        );
+        });
     }
 }
 
-/* let cu1 = new Currency();
-cu1.fill_currencies();
-Object.values(Currency.all_currencies).forEach(data => {
-    console.log(data.toString());
-}); */
+
+
+Currency.fill_currencies();

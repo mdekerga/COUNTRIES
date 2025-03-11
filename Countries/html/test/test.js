@@ -41,17 +41,20 @@ function moreLanguages() {
 }
 
 function withCommonLanguage(){
-    console.log();
+    
 }
 
 function withoutCommonCurrency(){
-    console.log();
+    
 }
 
 function sortingDecreasingDensity(){
-    console.log();
+    let countriesArray = Object.values(Country.all_countries);
+    let result = countriesArray.sort(function(a, b){return b.getPopDensity() - a.getPopDensity()});
+
+    console.table(result)
 }
 
 function moreTopLevelDomains(){
-    console.log();
+    
 }
