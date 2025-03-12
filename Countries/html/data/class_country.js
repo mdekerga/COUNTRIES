@@ -2,7 +2,7 @@ class Country{
     static all_countries = [];
 
     /*code Alpha3, nomFr, capitale, Continent, population,superficie, pays_voisins */ 
-    constructor(alpha3,nom,capitale,continent,population,superficie,pays_voisins = [],languages,currency){
+    constructor(alpha3,nom,capitale,continent,population,superficie,pays_voisins = [],languages,currency,domains){
         this._alpha3 = alpha3;
         this._nom = nom;
         this._capitale = capitale;
@@ -12,6 +12,7 @@ class Country{
         this._pays_voisins = pays_voisins;
         this._languages = languages;
         this._currencies = currency;
+        this._domains = domains;
     }
 
 
@@ -34,7 +35,8 @@ class Country{
                 data.area,
                 data.borders,
                 data.languages,
-                data.currencies
+                data.currencies,
+                data.topLevelDomain
                 
             );
             Country.all_countries[data.alpha3Code] = country;

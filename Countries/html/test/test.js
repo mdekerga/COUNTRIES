@@ -42,12 +42,30 @@ function moreLanguages() {
 
 /* voisins qui ont au moins une langue commune*/
 function withCommonLanguage(){
+    let result = [];
     
+
+    
+
+    console.table(result);
 }
 
 /* voisins qui n'ont pas de monnaies communes*/
 function withoutCommonCurrency(){
+    let result = [];
+
     
+    Object.values(Country.all_countries).forEach(country=>{
+        let voisins = country.getBorders();
+        let monnaie = country.getCurrencies();
+        voisins.forEach(voisin=>{
+            if(!voisin.getCurrencies().includes(monnaie)){
+                result.push(voisin);
+            }
+        })
+    })
+
+    console.table(result);
 }
 
 function sortingDecreasingDensity(){
@@ -58,5 +76,14 @@ function sortingDecreasingDensity(){
 }
 
 function moreTopLevelDomains(){
+    let result = [];
+
+    Object.values(Country.all_countries).forEach(country=>{
+        if(country._domains.length > 1){
+            result.push(country);
+        }
+    })
     
+
+    console.table(result);
 }
