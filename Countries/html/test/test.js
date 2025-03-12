@@ -43,27 +43,59 @@ function moreLanguages() {
 /* voisins qui ont au moins une langue commune*/
 function withCommonLanguage(){
     let result = [];
-    
+    Object.values(Country.all_countries).forEach(country => {
+        let voisins = country.getBorders();
+        let commonLanguageFound = false;
 
-    
+        voisins.forEach(voisin => {
+            // Check if there is any common language between the country and its neighbor
+            const commonLanguages = country.getLanguages().filter(language =>
+                voisin.getLanguages().includes(language)
+            );
+
+            if (commonLanguages.length > 0) {
+                commonLanguageFound = true;
+            }
+        });
+
+        if (commonLanguageFound) {
+            result.push(country);
+        }
+    });
 
     console.table(result);
 }
 
 /* voisins qui n'ont pas de monnaies communes*/
-function withoutCommonCurrency(){
+function withoutCommonCurrency() {
     let result = [];
 
-    
-    Object.values(Country.all_countries).forEach(country=>{
+    // On parcourt tous les pays
+    Object.values(Country.all_countries).forEach(country => {
         let voisins = country.getBorders();
-        let monnaie = country.getCurrencies();
-        voisins.forEach(voisin=>{
-            if(!voisin.getCurrencies().includes(monnaie)){
-                result.push(voisin);
+        let nonCommonCurrencyFound = false;
+       
+        voisins.forEach(voisin => {
+            const countryCurrencies = country.getCurrencies();
+            const voisinCurrencies = voisin.getCurrencies();
+
+            const commonCurrency = countryCurrencies.some(currency =>
+                voisinCurrencies.includes(currency)
+            );
+
+            
+            if (commonCurrency) {
+                nonCommonCurrencyFound = false;
+                return;  
+            } else {
+                nonCommonCurrencyFound = true;
             }
-        })
-    })
+        });
+
+        if (nonCommonCurrencyFound) {
+            result.push(country);
+        }
+    });
 
     console.table(result);
 }

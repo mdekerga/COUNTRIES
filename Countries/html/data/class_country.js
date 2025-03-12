@@ -1,8 +1,8 @@
 class Country{
     static all_countries = [];
 
-    /*code Alpha3, nomFr, capitale, Continent, population,superficie, pays_voisins */ 
-    constructor(alpha3,nom,capitale,continent,population,superficie,pays_voisins = [],languages,currency,domains){
+ 
+    constructor(alpha3,nom,capitale,continent,population,superficie,pays_voisins = [],languages,currency,domains,drapeau){
         this._alpha3 = alpha3;
         this._nom = nom;
         this._capitale = capitale;
@@ -13,6 +13,7 @@ class Country{
         this._languages = languages;
         this._currencies = currency;
         this._domains = domains;
+        this._drapeau = drapeau;
     }
 
 
@@ -36,7 +37,8 @@ class Country{
                 data.borders,
                 data.languages,
                 data.currencies,
-                data.topLevelDomain
+                data.topLevelDomain,
+                data.flag
                 
             );
             Country.all_countries[data.alpha3Code] = country;
@@ -80,4 +82,3 @@ class Country{
 
 
 Country.fill_countries();
-console.log(Country.all_countries['ASM'].getLanguages());
