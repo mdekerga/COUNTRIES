@@ -40,10 +40,12 @@ function moreLanguages() {
     console.table(result);
 }
 
+/* voisins qui ont au moins une langue commune*/
 function withCommonLanguage(){
     
 }
 
+/* voisins qui n'ont pas de monnaies communes*/
 function withoutCommonCurrency(){
     
 }

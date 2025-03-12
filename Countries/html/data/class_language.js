@@ -24,6 +24,8 @@ class Language {
     }
 }
 
+Language.fill_languages();
+
 /* let lang1 = new Language();
 lang1.fill_languages();
 Object.values(Language.all_languages).forEach(data => {
