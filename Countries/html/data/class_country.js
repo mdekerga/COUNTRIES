@@ -41,15 +41,33 @@ class Country{
     }
 
     getBorders(){
-        return
+        let borders = [];
+
+        this._pays_voisins.forEach(border=>{
+            borders.push(Country.all_countries[border]);
+        })
+        return borders;
     }
 
     getCurrencies(){
-        return
+        let currencies = [];
+
+        this._pays_voisins.forEach(border=>{
+            borders.push(Country.all_countries[border]);
+        })
+
+        return currencies;
     }
 
     getLanguages(){
-        return 
+        let languages = [];
+        
+        this._pays_voisins.forEach(border=>{
+            borders.push(Country.all_countries[border]);
+        })
+
+        return languages; 
+
     }
 }
 
