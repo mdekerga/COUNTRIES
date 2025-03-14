@@ -63,7 +63,7 @@ function moreLanguages() {
 function withCommonLanguage(){
     let result = [];
     Object.values(Country.all_countries).forEach(country => {
-        let voisins = country.get_pays_voisins();
+        let voisins = country.getBorders();
         let commonLanguageFound = false;
 
         voisins.forEach(voisin => {
