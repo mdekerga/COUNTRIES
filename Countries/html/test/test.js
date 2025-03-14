@@ -4,22 +4,24 @@ function outsideTheContinent() {
     );
     console.table(result);
 }
-
 function moreNeighbors() {
     let maxNeighbors = 0;
     let result = [];
     
     Object.values(Country.all_countries).forEach(country => {
+        
+        let voisins = country.getBorders().map(neighbor => neighbor.toString());
+
         if (country._pays_voisins.length > maxNeighbors) {
             maxNeighbors = country._pays_voisins.length;
             result = [{
                 countryNom: country._nom,
-                voisins: country._pays_voisins.toString()
+                voisins: voisins
             }];
         } else if (country._pays_voisins.length === maxNeighbors) {
             result.push({
                 countryNom: country._nom,
-                voisins: country._pays_voisins.toString()
+                voisins: voisins
             });
         }
     });
@@ -27,6 +29,7 @@ function moreNeighbors() {
     // Affichage des résultats avec le pays et les noms de ses voisins
     console.table(result);
 }
+
 
 
 function neighborless() {
@@ -45,6 +48,7 @@ function moreLanguages() {
             result = [{
                 countryNom: country._nom,
                 languages: country._languages
+                
             }];
         } else if (country._languages.length === maxLanguages) {
             result.push({
@@ -62,6 +66,8 @@ function moreLanguages() {
 /* voisins qui ont au moins une langue commune*/
 function withCommonLanguage(){
     let result = [];
+    let pays_voisin;
+    let lcommune;
     Object.values(Country.all_countries).forEach(country => {
         let voisins = country.getBorders();
         let commonLanguageFound = false;
@@ -72,19 +78,27 @@ function withCommonLanguage(){
                 voisin.getLanguages().includes(language)
             );
 
+            
             if (commonLanguages.length > 0) {
                 commonLanguageFound = true;
+                pays_voisin = voisin;
+                lcommune = commonLanguages;
             }
         });
 
         if (commonLanguageFound) {
-            result.push(country);
-            console.log(country);
+            result.push({
+                countryNom: country._nom,
+                countryVoisin: pays_voisin,
+                langue_communes: lcommune
+            });;
         }
     });
 
+
     console.table(result);
 }
+
 
 /* voisins qui n'ont pas de monnaies communes*/
 function withoutCommonCurrency() {
