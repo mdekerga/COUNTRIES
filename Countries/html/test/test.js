@@ -9,19 +9,28 @@ function moreNeighbors() {
     let maxNeighbors = 0;
     let result = [];
     
-    Object.values(all_countries).forEach(country => {
-        if (country.borders.length > maxNeighbors) {
-            maxNeighbors = country.borders.length;
-            result = [country];
-        } else if (country.borders.length === maxNeighbors) {
-            result.push(country);
+    Object.values(Country.all_countries).forEach(country => {
+        if (country._pays_voisins.length > maxNeighbors) {
+            maxNeighbors = country._pays_voisins.length;
+            result = [{
+                countryNom: country._nom,
+                voisins: country._pays_voisins.toString()
+            }];
+        } else if (country._pays_voisins.length === maxNeighbors) {
+            result.push({
+                countryNom: country._nom,
+                voisins: country._pays_voisins.toString()
+            });
         }
     });
+    
+    // Affichage des résultats avec le pays et les noms de ses voisins
     console.table(result);
 }
 
+
 function neighborless() {
-    const result = Object.values(all_countries).filter(country => country.borders.length === 0);
+    const result = Object.values(Country.all_countries).filter(country => country._pays_voisins.length === 0);
     console.table(result);
 }
 
@@ -29,22 +38,32 @@ function moreLanguages() {
     let maxLanguages = 0;
     let result = [];
     
-    Object.values(all_countries).forEach(country => {
-        if (country.languages.length > maxLanguages) {
-            maxLanguages = country.languages.length;
-            result = [country];
-        } else if (country.languages.length === maxLanguages) {
-            result.push(country);
+    // Collect the countries with the most languages
+    Object.values(Country.all_countries).forEach(country => {
+        if (country._languages.length > maxLanguages) {
+            maxLanguages = country._languages.length;
+            result = [{
+                countryNom: country._nom,
+                languages: country._languages
+            }];
+        } else if (country._languages.length === maxLanguages) {
+            result.push({
+                countryNom: country._nom,
+                languages: country._languages
+            });
         }
     });
+    
+    // Output all results in one table
     console.table(result);
 }
+
 
 /* voisins qui ont au moins une langue commune*/
 function withCommonLanguage(){
     let result = [];
     Object.values(Country.all_countries).forEach(country => {
-        let voisins = country.getBorders();
+        let voisins = country.get_pays_voisins();
         let commonLanguageFound = false;
 
         voisins.forEach(voisin => {
@@ -72,7 +91,7 @@ function withoutCommonCurrency() {
 
     // On parcourt tous les pays
     Object.values(Country.all_countries).forEach(country => {
-        let voisins = country.getBorders();
+        let voisins = country.get_pays_voisins();
         let nonCommonCurrencyFound = false;
        
         voisins.forEach(voisin => {
