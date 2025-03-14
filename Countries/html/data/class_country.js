@@ -2,7 +2,7 @@ class Country{
     static all_countries = [];
 
  
-    constructor(alpha3,nom,capitale,continent,population,superficie,pays_voisins = [],languages,currency,domains,drapeau){
+    constructor(alpha3,nom,capitale,continent,population,superficie,pays_voisins = [],languages,currency,domains,drapeau,translations){
         this._alpha3 = alpha3;
         this._nom = nom;
         this._capitale = capitale;
@@ -14,22 +14,38 @@ class Country{
         this._currencies = currency;
         this._domains = domains;
         this._drapeau = drapeau;
+        this._translations = translations
     }
 
 
 
-    toString(){
-        return `${this._alpha3}, ${this._nom}, ${this._capitale}, ${this._continent}, ${this._population} hab, ${this._pays_voisins} `;
+    toString() {
+
+        const frenchNeighbors = this._pays_voisins.map(code => {
+            const neighbor = Country.all_countries[code];
+            return neighbor ? neighbor._translations['fr'] : code; 
+        });
+    
+        return `${this._alpha3}, ${this._translations['fr']}, ${this._capitale}, ${this._continent}, ${this._population} hab, (${frenchNeighbors.join(', ')}) `;
     }
+    
 
 
-    static fill_countries(){
+    static fill_countries() {
+        const noms = ["fr", "it", "es", "de"];
         countries.forEach(data => {
             
-            let country = new Country
-            (
+            const translations = noms.reduce((acc, lang) => {
+                if (data.translations[lang]) {
+                    acc[lang] = data.translations[lang];
+                }
+                return acc;
+            }, {});
+
+
+            let country = new Country(
                 data.alpha3Code,
-                data.translations['fr'],
+                data.name,
                 data.capital,
                 data.region,
                 data.population,
@@ -38,9 +54,10 @@ class Country{
                 data.languages,
                 data.currencies,
                 data.topLevelDomain,
-                data.flag
-                
+                data.flag,
+                translations
             );
+
             Country.all_countries[data.alpha3Code] = country;
         });
     }
@@ -82,3 +99,4 @@ class Country{
 
 
 Country.fill_countries();
+console.log(Country.all_countries["RUS"].toString());
