@@ -79,6 +79,7 @@ function withCommonLanguage(){
 
         if (commonLanguageFound) {
             result.push(country);
+            console.log(country);
         }
     });
 
@@ -91,7 +92,7 @@ function withoutCommonCurrency() {
 
     // On parcourt tous les pays
     Object.values(Country.all_countries).forEach(country => {
-        let voisins = country.get_pays_voisins();
+        let voisins = country.getBorders();
         let nonCommonCurrencyFound = false;
        
         voisins.forEach(voisin => {
