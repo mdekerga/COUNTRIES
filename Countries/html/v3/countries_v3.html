@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste de tous les pays (Détails)</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <h1 style="text-align: center;">Liste de tous les pays (Détails)</h1>
+
+    <table id="countries-table">
+        <thead>
+            <tr>
+                <th>Nom (Français)</th>
+                <th>Population</th>
+                <th>Surface (km²)</th>
+                <th>Densité de population (hab/km²)</th>
+                <th>Continent</th>
+                <th>Drapeau</th>
+            </tr>
+        </thead>
+        <tbody>
+             <!-- Liste de tous les pays -->
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        <button id="prev-button" disabled>PRÉC</button>
+        <span id="page-info">Page 1</span>
+        <button id="next-button">SUIV</button>
+    </div>
+
+    <!-- Details Overlay -->
+    <div class="details-overlay" id="details-overlay">
+        <div class="details-content">
+            <span class="close-button" id="close-details-button">&times;</span>
+            <h2 id="details-name"></h2>
+            <p><strong>Population:</strong> <span id="details-population"></span></p>
+            <p><strong>Surface:</strong> <span id="details-area"></span> km²</p>
+            <p><strong>Densité de population:</strong> <span id="details-density"></span> hab/km²</p>
+            <p><strong>Continent:</strong> <span id="details-continent"></span></p>
+            <p><strong>Pays voisins:</strong> <span id="details-neighbors"></span></p>
+            <p><strong>Langues:</strong> <span id="details-languages"></span></p>
+            <p><strong>Devises:</strong> <span id="details-currencies"></span></p>
+        </div>
+    </div>
+
+    <!-- Flag Overlay -->
+    <div class="flag-overlay" id="flag-overlay">
+        <div class="flag-content">
+            <span class="close-button" id="close-flag-button">&times;</span>
+            <img id="large-flag" src="" alt="Drapeau">
+        </div>
+    </div>
+
+    <script src="../data/class_country.js"></script>
+    <script src="../data/class_currency.js"></script>
+    <script src="../data/class_language.js"></script>
+    <script src="../data/countries.js"></script>
+    <script src="script_v3.js"></script>
+</body>
+</html>

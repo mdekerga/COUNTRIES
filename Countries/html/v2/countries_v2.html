@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste de tous les pays (Pagination)</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <h1 style="text-align: center;">Liste de tous les pays (Pagination)</h1>
+
+    <table id="countries-table">
+        <thead>
+            <tr>
+                <th>Nom (Français)</th>
+                <th>Population</th>
+                <th>Surface (km²)</th>
+                <th>Densité de population (hab/km²)</th>
+                <th>Continent</th>
+                <th>Drapeau</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Liste de tous les pays -->
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        <button id="prev-button" disabled>PRÉC</button>
+        <span id="page-info">Page 1</span>
+        <button id="next-button">SUIV</button>
+    </div>
+
+    <script src="../data/class_country.js"></script>
+    <script src="../data/class_currency.js"></script>
+    <script src="../data/class_language.js"></script>
+    <script src="../data/countries.js"></script>
+    <script src="script_v2.js"></script>
+</body>
+</html>
