@@ -37,7 +37,7 @@ const largeFlag = document.getElementById("large-flag");
 
 const createCountryRow = (country) => {
     const row = document.createElement("tr");
-    row.setAttribute("data-alpha3", country._alpha3); // Add a custom attribute for country identification
+    row.setAttribute("data-alpha3", country._alpha3); 
 
     const nameCell = document.createElement("td");
     nameCell.textContent = country._translations['fr'] || "N/A";
@@ -66,7 +66,7 @@ const createCountryRow = (country) => {
     flagImg.alt = `Drapeau de ${country._translations['fr']}`;
     flagImg.style.height = "30px";
     flagImg.addEventListener("click", (e) => {
-        e.stopPropagation(); // Prevent row click event
+        e.stopPropagation(); 
         largeFlag.src = country._drapeau;
         flagOverlay.style.display = "flex";
     });
@@ -188,7 +188,7 @@ const showCountryDetails = (country) => {
     detailsDensity.textContent = country.getPopDensity()?.toFixed(2) || "N/A";
     detailsContinent.textContent = country._continent || "N/A";
     detailsNeighbors.textContent = country._pays_voisins.map(code => Country.all_countries[code]?._translations['fr'] || code).join(", ") || "N/A";
-    detailsLanguages.textContent = country._languages.map(lang => lang.name).join(", ") || "N/A"; // Use lang.name
+    detailsLanguages.textContent = country._languages.map(lang => lang.name).join(", ") || "N/A";
     detailsCurrencies.textContent = country._currencies.map(currency => currency.name).join(", ") || "N/A";
     detailsOverlay.style.display = "flex";
 };
