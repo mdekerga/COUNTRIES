@@ -12,7 +12,7 @@ const createCountryRow = (country) => {
 
     const populationCell = document.createElement("td");
     populationCell.textContent = country._population?.toLocaleString('fr-FR') || "N/A";
-    populationCell.style.textAlign = "right"; // Right-align numbers
+    populationCell.style.textAlign = "right";
     row.appendChild(populationCell);
 
     const areaCell = document.createElement("td");
