@@ -10,6 +10,8 @@
 
     <h1 style="text-align: center;">Liste de tous les pays (Filtrage)</h1>
 
+
+
     <!-- Filters -->
     <div class="filters">
         <select id="continent-filter">
@@ -19,6 +21,12 @@
             <option value="">Toutes les langues</option>
         </select>
         <input type="text" id="country-filter" placeholder="Filtrer par nom de pays">
+    </div>
+
+    <div class="pagination">
+        <button id="prev-button" disabled>PRÉC</button>
+        <span id="page-info">Page 1</span>
+        <button id="next-button">SUIV</button>
     </div>
 
     <table id="countries-table">
@@ -37,11 +45,7 @@
         </tbody>
     </table>
 
-    <div class="pagination">
-        <button id="prev-button" disabled>PRÉC</button>
-        <span id="page-info">Page 1</span>
-        <button id="next-button">SUIV</button>
-    </div>
+
 
     <!-- Details Overlay -->
     <div class="details-overlay" id="details-overlay">

@@ -79,6 +79,62 @@ button:hover {
 
 /*Partie 2*/
 /* Table Styles */
+
+
+#countries-table {
+    table-layout: fixed;
+   
+}
+
+#countries-table th:nth-child(1), 
+#countries-table td:nth-child(1) {
+    width: 20%; 
+}
+
+#countries-table th:nth-child(2), 
+#countries-table td:nth-child(2) {
+    width: 7%; 
+}
+
+#countries-table th:nth-child(3), 
+#countries-table td:nth-child(3) {
+    width: 7%; 
+}
+
+#countries-table th:nth-child(4), 
+#countries-table td:nth-child(4) {
+    width: 7%;
+}
+
+#countries-table th:nth-child(5), 
+#countries-table td:nth-child(5) {
+    width: 9%; 
+}
+
+#countries-table th:nth-child(6), 
+#countries-table td:nth-child(6) {
+    width: 8%; 
+}
+
+#countries-table td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 8px 12px;
+}
+
+#countries-table td:nth-child(6) {
+    text-align: center;
+    padding: 5px;
+}
+
+#countries-table td:nth-child(6) img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
 table {
     width: 80%;
     border-collapse: collapse;
@@ -108,25 +164,102 @@ th:hover {
     background-color: #34495e;
 }
 
-th.sorted {
-    background-color: #1abc9c;
+
+/* Add these styles to your CSS */
+th {
+    cursor: pointer;
+    position: relative;
 }
 
-th .sort-icon {
-    display: inline-block;
-    margin-left: 5px;
-    width: 12px;
-    height: 12px;
-    background-size: contain;
-    background-repeat: no-repeat;
+/* Sorting icons styles */
+
+.sort-icon {
+    position: absolute;
+    right: 8px; 
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
 }
 
-th .sort-icon.asc {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3l-8 8h16z" fill="white"/></svg>');
+/* Arrow triangles using CSS borders */
+.sort-icon::before,
+.sort-icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
 }
 
-th .sort-icon.desc {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21l8-8H4z" fill="white"/></svg>');
+/* Up arrow */
+.sort-icon::before {
+    top: 0;
+    border-bottom: 5px solid #ccc;
+}
+
+/* Down arrow */
+.sort-icon::after {
+    bottom: 0;
+    border-top: 5px solid #ccc;
+}
+
+/* Update these styles in your CSS */
+.sorted-asc .sort-icon::before {
+    border-bottom-color: #ffffff; 
+}
+
+.sorted-asc .sort-icon::after {
+    border-top-color: #ccc; 
+}
+
+.sorted-desc .sort-icon::after {
+    border-top-color: #ffffff; 
+}
+
+.sorted-desc .sort-icon::before {
+    border-bottom-color: #ccc; 
+}
+
+/* Hover effects */
+th:hover {
+    background-color: #34495e;
+}
+
+ .sort-icon::before {
+    border-bottom-color: #aaa; 
+}
+
+.sort-icon::after {
+    border-top-color: #aaa;
+}
+
+/* Table cell styles */
+td {
+    cursor: pointer; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+/* Flag image specific styles */
+td img {
+    cursor: pointer;
+    max-height: 30px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Add cursor pointer to table cells */
+td {
+    cursor: pointer;
+}
+
+/* Keep the flag image cursor as pointer */
+td img {
+    cursor: pointer;
 }
 
 /* Table Row Hover Effect */

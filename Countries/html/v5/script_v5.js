@@ -44,16 +44,19 @@ const createCountryRow = (country) => {
     row.appendChild(nameCell);
 
     const populationCell = document.createElement("td");
-    populationCell.textContent = country._population?.toLocaleString() || "N/A";
+    populationCell.textContent = country._population?.toLocaleString('fr-FR') || "N/A";
+    populationCell.style.textAlign = "right"; // Right-align numbers
     row.appendChild(populationCell);
 
     const areaCell = document.createElement("td");
-    areaCell.textContent = country._superficie?.toLocaleString() || "N/A";
+    areaCell.textContent = country._superficie?.toLocaleString('fr-FR') || "N/A";
+    areaCell.style.textAlign = "right";
     row.appendChild(areaCell);
 
     const densityCell = document.createElement("td");
     const density = country.getPopDensity();
-    densityCell.textContent = density ? density.toFixed(2) : "N/A";
+    densityCell.textContent = density ? density.toLocaleString('fr-FR', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : "N/A";
+    densityCell.style.textAlign = "right";
     row.appendChild(densityCell);
 
     const continentCell = document.createElement("td");
@@ -74,7 +77,6 @@ const createCountryRow = (country) => {
     row.appendChild(flagCell);
 
     row.addEventListener("click", () => showCountryDetails(country));
-
     return row;
 };
 
@@ -231,20 +233,32 @@ closeDetailsButton.addEventListener("click", () => {
 closeFlagButton.addEventListener("click", () => {
     flagOverlay.style.display = "none";
 });
+
 document.querySelectorAll("#countries-table th[data-sort]").forEach(header => {
     header.addEventListener("click", () => {
         const column = header.getAttribute("data-sort");
 
+        // Remove all sorting classes first
+        document.querySelectorAll("#countries-table th").forEach(th => {
+            th.classList.remove("sorted", "sorted-asc", "sorted-desc");
+        });
+
         if (sortColumn === column) {
+            // If clicking the same column, toggle order
             sortOrder *= -1;
         } else {
+            // New column, default to ascending
             sortColumn = column;
             sortOrder = 1;
         }
 
-        document.querySelectorAll("#countries-table th").forEach(th => th.classList.remove("sorted"));
-
+        // Add appropriate classes
         header.classList.add("sorted");
+        if (sortOrder === 1) {
+            header.classList.add("sorted-asc");
+        } else {
+            header.classList.add("sorted-desc");
+        }
 
         displayCountries();
     });

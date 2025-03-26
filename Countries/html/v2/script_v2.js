@@ -12,42 +12,46 @@ const pageInfo = document.getElementById("page-info");
 
 const createCountryRow = (country) => {
     const row = document.createElement("tr");
+    row.setAttribute("data-alpha3", country._alpha3); 
 
-    // Nom français
     const nameCell = document.createElement("td");
     nameCell.textContent = country._translations['fr'] || "N/A";
     row.appendChild(nameCell);
 
-    // Population
     const populationCell = document.createElement("td");
-    populationCell.textContent = country._population?.toLocaleString() || "N/A";
+    populationCell.textContent = country._population?.toLocaleString('fr-FR') || "N/A";
+    populationCell.style.textAlign = "right"; // Right-align numbers
     row.appendChild(populationCell);
 
-    // Superficie
     const areaCell = document.createElement("td");
-    areaCell.textContent = country._superficie?.toLocaleString() || "N/A";
+    areaCell.textContent = country._superficie?.toLocaleString('fr-FR') || "N/A";
+    areaCell.style.textAlign = "right";
     row.appendChild(areaCell);
 
-    // Densité de population
     const densityCell = document.createElement("td");
     const density = country.getPopDensity();
-    densityCell.textContent = density ? density.toFixed(2) : "N/A";
+    densityCell.textContent = density ? density.toLocaleString('fr-FR', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : "N/A";
+    densityCell.style.textAlign = "right";
     row.appendChild(densityCell);
 
-    // Continent
     const continentCell = document.createElement("td");
     continentCell.textContent = country._continent || "N/A";
     row.appendChild(continentCell);
 
-    // Flag
     const flagCell = document.createElement("td");
     const flagImg = document.createElement("img");
     flagImg.src = country._drapeau || "";
     flagImg.alt = `Drapeau de ${country._translations['fr']}`;
     flagImg.style.height = "30px";
+    flagImg.addEventListener("click", (e) => {
+        e.stopPropagation(); 
+        largeFlag.src = country._drapeau;
+        flagOverlay.style.display = "flex";
+    });
     flagCell.appendChild(flagImg);
     row.appendChild(flagCell);
 
+    row.addEventListener("click", () => showCountryDetails(country));
     return row;
 };
 
