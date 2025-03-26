@@ -45,7 +45,7 @@ const createCountryRow = (country) => {
 
     const populationCell = document.createElement("td");
     populationCell.textContent = country._population?.toLocaleString('fr-FR') || "N/A";
-    populationCell.style.textAlign = "right"; // Right-align numbers
+    populationCell.style.textAlign = "right";
     row.appendChild(populationCell);
 
     const areaCell = document.createElement("td");
@@ -238,21 +238,17 @@ document.querySelectorAll("#countries-table th[data-sort]").forEach(header => {
     header.addEventListener("click", () => {
         const column = header.getAttribute("data-sort");
 
-        // Remove all sorting classes first
         document.querySelectorAll("#countries-table th").forEach(th => {
             th.classList.remove("sorted", "sorted-asc", "sorted-desc");
         });
 
         if (sortColumn === column) {
-            // If clicking the same column, toggle order
             sortOrder *= -1;
         } else {
-            // New column, default to ascending
             sortColumn = column;
             sortOrder = 1;
         }
 
-        // Add appropriate classes
         header.classList.add("sorted");
         if (sortOrder === 1) {
             header.classList.add("sorted-asc");

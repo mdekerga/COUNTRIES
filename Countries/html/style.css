@@ -18,14 +18,14 @@ h1 {
 /* Heading Styles */
 h2 {
     font-size: 1.5rem;
-    color: #2c3e50; /* Dark blue for headings */
+    color: #2c3e50; 
     margin-bottom: 10px;
     font-weight: 600;
 }
 
 /* Button Styling */
 button {
-    background: #2c3e50; /* Dark blue for buttons */
+    background: #2c3e50;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -37,7 +37,7 @@ button {
 }
 
 button:hover {
-    background: #1abc9c; /* Teal for hover effect */
+    background: #1abc9c; 
     transform: scale(1.05);
 }
 
@@ -56,25 +56,24 @@ button:hover {
     background: white;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    background-color: #fff; /* White background */
-    border: 1px solid #ddd; /* Light border for definition */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff; 
+    border: 1px solid #ddd;
 }
 
-/* Additional Styling for Consistency */
 .container h2 {
     text-align: center;
     margin-bottom: 20px;
-    color: #2c3e50; /* Dark blue for headings */
+    color: #2c3e50; 
 }
 
 .container button {
-    width: 100%; /* Full-width buttons */
-    margin: 10px 0; /* Consistent spacing */
+    width: 100%; 
+    margin: 10px 0;
 }
 
 .container button:last-child {
-    margin-bottom: 0; /* Remove margin for the last button */
+    margin-bottom: 0; 
 }
 
 /*Partie 2*/
@@ -165,13 +164,11 @@ th:hover {
 }
 
 
-/* Add these styles to your CSS */
 th {
     cursor: pointer;
     position: relative;
 }
 
-/* Sorting icons styles */
 
 .sort-icon {
     position: absolute;
@@ -181,8 +178,6 @@ th {
     width: 20px;
     height: 20px;
 }
-
-/* Arrow triangles using CSS borders */
 .sort-icon::before,
 .sort-icon::after {
     content: "";
@@ -194,19 +189,16 @@ th {
     border-right: 5px solid transparent;
 }
 
-/* Up arrow */
 .sort-icon::before {
     top: 0;
     border-bottom: 5px solid #ccc;
 }
 
-/* Down arrow */
 .sort-icon::after {
     bottom: 0;
     border-top: 5px solid #ccc;
 }
 
-/* Update these styles in your CSS */
 .sorted-asc .sort-icon::before {
     border-bottom-color: #ffffff; 
 }
@@ -223,7 +215,6 @@ th {
     border-bottom-color: #ccc; 
 }
 
-/* Hover effects */
 th:hover {
     background-color: #34495e;
 }
@@ -236,7 +227,6 @@ th:hover {
     border-top-color: #aaa;
 }
 
-/* Table cell styles */
 td {
     cursor: pointer; 
     white-space: nowrap;
@@ -244,7 +234,6 @@ td {
     text-overflow: ellipsis; 
 }
 
-/* Flag image specific styles */
 td img {
     cursor: pointer;
     max-height: 30px;
@@ -252,17 +241,14 @@ td img {
     margin: 0 auto;
 }
 
-/* Add cursor pointer to table cells */
 td {
     cursor: pointer;
 }
 
-/* Keep the flag image cursor as pointer */
 td img {
     cursor: pointer;
 }
 
-/* Table Row Hover Effect */
 tbody tr {
     transition: background-color 0.3s ease;
 }
@@ -271,7 +257,6 @@ tbody tr:hover {
     background-color: #f1f1f1;
 }
 
-/* Pagination Styles */
 .pagination {
     text-align: center;
     margin-top: 20px;
@@ -298,7 +283,6 @@ tbody tr:hover {
     cursor: not-allowed;
 }
 
-/* Overlay Styles */
 .details-overlay, .flag-overlay {
     display: none;
     position: fixed;
@@ -342,7 +326,6 @@ tbody tr:hover {
     border-radius: 10px;
 }
 
-/* Filters Section */
 .filters {
     width: 80%;
     margin: 20px auto;
